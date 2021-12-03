@@ -18,7 +18,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 export const ActivityManager = () => {
   return (
-    <VStack w="full" h="full" p={10} spacing={10} alignItems="flex-end">
+    <VStack w="full" h="100%" p={10} spacing={10} alignItems="flex-end">
       <HStack alignSelf="flex-end">
         <ColorModeSwitcher />
       </HStack>
