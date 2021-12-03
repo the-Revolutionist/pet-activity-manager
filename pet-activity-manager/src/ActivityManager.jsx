@@ -32,12 +32,6 @@ export const ActivityManager = () => {
         </Heading>
       </VStack>
       <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
-        <GridItem colSpan={2}>
-          <FormControl>
-            <FormLabel>Add Note</FormLabel>
-            <Input placeholder="Enter additional info" />
-          </FormControl>
-        </GridItem>
         <GridItem colSpan={1}>
           <FormControl>
             <FormLabel>Choose an activity</FormLabel>
@@ -46,6 +40,12 @@ export const ActivityManager = () => {
               <option value="Medicine">Medicine</option>
               <option value="Misc">Misc</option>
             </Select>
+          </FormControl>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <FormControl>
+            <FormLabel>Add Note</FormLabel>
+            <Input placeholder="Enter additional info" />
           </FormControl>
         </GridItem>
         <GridItem colSpan={2}>
