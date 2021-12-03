@@ -1,7 +1,11 @@
-export const ActivityList = () => {
+import { ActivityCard } from './ActivityCard';
+
+export const ActivityList = ({ note, time, activity }) => {
   return (
     <>
-      <div>Activity Log</div>
+      <ul>
+        <ActivityCard note={note} activity={activity} time={time} />
+      </ul>
     </>
   );
 };

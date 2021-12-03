@@ -1,6 +1,5 @@
 import {
   Button,
-  Checkbox,
   FormControl,
   FormLabel,
   GridItem,
@@ -12,13 +11,41 @@ import {
   SimpleGrid,
   Text,
   VStack,
+  useToast,
 } from '@chakra-ui/react';
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
+import { useState } from 'react';
 
-export const ActivityManager = () => {
+export const ActivityManager = ({ time, note, activity }) => {
+  const [activity, setActivity] = useState();
+  const [note, setNote] = useState();
+  const [time, setTime] = useState();
+
+  const toast = useToast();
+  const handleClick = () => {
+    toast({
+      title: 'Updated',
+      description: 'New Activity Added to List',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
+    setTime(Date.now());
+  };
   return (
-    <VStack w="full" h="100%" p={10} spacing={10} alignItems="flex-end">
+    <VStack
+      bgColor="grey"
+      opacity="0.9"
+      w="full"
+      borderColor="transparent"
+      borderWidth={1}
+      borderRadius="10px"
+      h="100%"
+      p={10}
+      spacing={10}
+      alignItems="flex-end"
+    >
       <HStack alignSelf="flex-end">
         <ColorModeSwitcher />
       </HStack>
@@ -34,23 +61,36 @@ export const ActivityManager = () => {
       <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
         <GridItem colSpan={1}>
           <FormControl>
-            <FormLabel>Choose an activity</FormLabel>
-            <Select>
+            <FormLabel>Choose an activity:</FormLabel>
+            <Select
+              focusBorderColor="tomato"
+              onChange={e => setActivity(e.target.value)}
+            >
+              <option value="">Choices</option>
               <option value="Meal">Meal</option>
               <option value="Medicine">Medicine</option>
               <option value="Misc">Misc</option>
             </Select>
           </FormControl>
         </GridItem>
+        <GridItem colSpan={1}>
+          <FormControl>
+            <Text>{time}</Text>
+          </FormControl>
+        </GridItem>
         <GridItem colSpan={2}>
           <FormControl>
-            <FormLabel>Add Note</FormLabel>
-            <Input placeholder="Enter additional info" />
+            <FormLabel>Add Note:</FormLabel>
+            <Input
+              onChange={e => setNote(e.target.value)}
+              focusBorderColor="tomato"
+              placeholder="Enter additional info"
+            />
           </FormControl>
         </GridItem>
         <GridItem colSpan={2}>
           <HStack>
-            <Button size="lg" w="full">
+            <Button size="lg" w="full" onClick={handleClick}>
               Add Activity
             </Button>
             <Button size="lg" w="full">
