@@ -1,42 +1,47 @@
 import { Center, VStack } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
 
 import { ActivityCard } from './ActivityCard';
-import { ActivityList } from './ActivityList';
 import { ActivityManager } from './ActivityManager';
 
 const activities = [
   {
+    id: 1,
+    title: 'Toilet Paper',
+    amount: 94.12,
+    date: Date(),
+  },
+  {
+    id: 2,
+    title: 'New TV',
+    amount: 799.99,
+    date: Date(),
+  },
+  {
+    id: 3,
+    title: 'Car Insurance',
+    amount: 294.67,
+    date: Date(),
+  },
+  {
     id: 4,
-    checked: false,
-    item: 'cookies',
-    time: Date(),
-  },
-  {
-    id: 5,
-    checked: false,
-    item: 'pet food',
-    time: Date(),
-  },
-  {
-    id: 6,
-    checked: false,
-    item: 'meal',
-    time: Date(),
+    title: 'New Desk',
+    amount: 450,
+    date: Date(),
   },
 ];
 
 function App() {
-  const [items, setItems] = useState([]);
-  useEffect(() => {
-    setItems(activities);
-    return () => {};
-  }, [items]);
   return (
     <Center>
       <VStack height="100%" width="500px">
-        <ActivityManager items={items} />
-        <ActivityCard item={items} />
+        <ActivityManager />
+        {activities.map(activity => (
+          <ActivityCard
+            title={activity.title}
+            date={activity.date}
+            amount={activity.amount}
+          />
+        ))}
       </VStack>
     </Center>
   );

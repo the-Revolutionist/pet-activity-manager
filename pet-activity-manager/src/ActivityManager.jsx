@@ -17,11 +17,7 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { useState } from 'react';
 
-export const ActivityManager = ({ items }) => {
-  const [activity, setActivity] = useState();
-  const [note, setNote] = useState();
-  const [time, setTime] = useState();
-
+export const ActivityManager = () => {
   const toast = useToast();
   const handleClick = () => {
     toast({
@@ -31,9 +27,6 @@ export const ActivityManager = ({ items }) => {
       duration: 3000,
       isClosable: true,
     });
-    setTime(Date.now());
-    setNote();
-    setActivity();
   };
   return (
     <VStack
@@ -64,10 +57,7 @@ export const ActivityManager = ({ items }) => {
         <GridItem colSpan={1}>
           <FormControl>
             <FormLabel>Choose an activity:</FormLabel>
-            <Select
-              focusBorderColor="tomato"
-              onChange={e => setActivity(e.target.value)}
-            >
+            <Select focusBorderColor="tomato">
               <option value="">Choices</option>
               <option value="Meal">Meal</option>
               <option value="Medicine">Medicine</option>
@@ -77,14 +67,13 @@ export const ActivityManager = ({ items }) => {
         </GridItem>
         <GridItem colSpan={1}>
           <FormControl>
-            <Text>{time}</Text>
+            <Text>TIme</Text>
           </FormControl>
         </GridItem>
         <GridItem colSpan={2}>
           <FormControl>
             <FormLabel>Add Note:</FormLabel>
             <Input
-              onChange={e => setNote(e.target.value)}
               focusBorderColor="tomato"
               placeholder="Enter additional info"
             />
