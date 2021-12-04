@@ -17,7 +17,7 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { useState } from 'react';
 
-export const ActivityManager = ({ time, note, activity }) => {
+export const ActivityManager = ({ items }) => {
   const [activity, setActivity] = useState();
   const [note, setNote] = useState();
   const [time, setTime] = useState();
@@ -32,6 +32,8 @@ export const ActivityManager = ({ time, note, activity }) => {
       isClosable: true,
     });
     setTime(Date.now());
+    setNote();
+    setActivity();
   };
   return (
     <VStack

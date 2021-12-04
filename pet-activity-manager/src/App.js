@@ -1,33 +1,42 @@
 import { Center, VStack } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { ActivityCard } from './ActivityCard';
 import { ActivityList } from './ActivityList';
 import { ActivityManager } from './ActivityManager';
 
-const activityPicked = 'meal';
-const timeStamp = Date.now();
-const note =
-  'nim pariatur cliche reprehenderit, ' +
-  'enim eiusmod high life accusamus terry richardson' +
-  ' ad squid. Nihil anim keffiyeh helvetica, craft beer' +
-  ' labore wes anderson cred nesciunt sapiente ea proident.';
-
-const items = {
-  activity: {
-    activityPicked,
-    timeStamp,
-    note,
+const activities = [
+  {
+    id: 4,
+    checked: false,
+    item: 'cookies',
+    time: Date(),
   },
-};
+  {
+    id: 5,
+    checked: false,
+    item: 'pet food',
+    time: Date(),
+  },
+  {
+    id: 6,
+    checked: false,
+    item: 'meal',
+    time: Date(),
+  },
+];
 
 function App() {
-  const [activity, setActivity] = useState();
-
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    setItems(activities);
+    return () => {};
+  }, [items]);
   return (
     <Center>
       <VStack height="100%" width="500px">
-        <ActivityManager />
-        <ActivityList item={items} />
+        <ActivityManager items={items} />
+        <ActivityCard item={items} />
       </VStack>
     </Center>
   );
