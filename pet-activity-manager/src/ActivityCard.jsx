@@ -36,40 +36,38 @@ export const ActivityCard = ({ activity, date, note }) => {
         borderWidth="1px"
       >
         <VStack>
+          <HStack alignItems="end" w="full">
+            <CloseButton
+              size="md"
+              onClick={() =>
+                toast({
+                  title: 'Deleted',
+                  description: 'Activity Removed from List',
+                  status: 'error',
+                  duration: 1000,
+                  isClosable: true,
+                })
+              }
+            />
+          </HStack>
           <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
             <GridItem colSpan={2}>
-              <HStack display="flex" direction="">
-                <VStack>
-                  <Center size="lg" w="full" h="full">
-                    Activity
-                  </Center>
-                  <Text>{activity}</Text>
-                </VStack>
-                <Spacer />
-                <VStack>
-                  <Center size="lg" w="full">
-                    Time Stamp
-                  </Center>
-                  <Text>{date}</Text>
-                </VStack>
-                <Spacer />
-                <CloseButton
-                  size="md"
-                  onClick={() =>
-                    toast({
-                      title: 'Deleted',
-                      description: 'Activity Removed from List',
-                      status: 'error',
-                      duration: 1000,
-                      isClosable: true,
-                    })
-                  }
-                />
-              </HStack>
+              <VStack>
+                <Center size="lg" w="full" h="full" fontWeight={700}>
+                  Activity
+                </Center>
+                <Text>{activity}</Text>
+              </VStack>
+              <VStack>
+                <Center size="lg" w="full" fontWeight={700}>
+                  Time Stamp
+                </Center>
+                <Text>{date}</Text>
+              </VStack>
             </GridItem>
             <GridItem colSpan={2}>
               <FormControl>
-                <FormLabel>Note:</FormLabel>
+                <FormLabel fontWeight={700}>Note:</FormLabel>
                 <Collapse startingHeight={20} in={show}>
                   <Text>{note}</Text>
                 </Collapse>
