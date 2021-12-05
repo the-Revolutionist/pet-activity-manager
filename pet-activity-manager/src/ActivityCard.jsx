@@ -9,7 +9,6 @@ import {
   GridItem,
   HStack,
   SimpleGrid,
-  Spacer,
   Stack,
   Text,
   VStack,

@@ -19,7 +19,7 @@ import paw from './paw.png';
 
 export const ActivityManager = () => {
   const toast = useToast();
-  const handleClick = () => {
+  const handleAdd = () => {
     toast({
       title: 'Updated',
       description: 'New Activity Added to List',
@@ -28,6 +28,8 @@ export const ActivityManager = () => {
       isClosable: true,
     });
   };
+  const handleClear = () => {};
+  const handleChange = () => {};
   return (
     <VStack
       bgColor="grey"
@@ -60,8 +62,12 @@ export const ActivityManager = () => {
         <GridItem colSpan={1}>
           <FormControl>
             <FormLabel>Choose an activity:</FormLabel>
-            <Select focusBorderColor="tomato">
-              <option value="">Choices</option>
+            <Select
+              placeholder="Select"
+              size="md"
+              focusBorderColor="tomato"
+              onChange={e => e.target.value}
+            >
               <option value="Meal">Meal</option>
               <option value="Medicine">Medicine</option>
               <option value="Misc">Misc</option>
@@ -84,10 +90,10 @@ export const ActivityManager = () => {
         </GridItem>
         <GridItem colSpan={2}>
           <HStack>
-            <Button size="lg" w="full" onClick={handleClick}>
+            <Button size="lg" w="full" onClick={handleAdd}>
               Add Activity
             </Button>
-            <Button size="lg" w="full">
+            <Button size="lg" w="full" onClick={handleClear}>
               Clear Form
             </Button>
           </HStack>
