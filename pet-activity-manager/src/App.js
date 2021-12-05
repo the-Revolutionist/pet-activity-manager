@@ -15,7 +15,7 @@ const activities = [
 
 function App() {
   return (
-    <Center>
+    <Center margin="20px">
       <VStack height="100%" width="500px">
         <ActivityManager />
         {activities.map(activity => (

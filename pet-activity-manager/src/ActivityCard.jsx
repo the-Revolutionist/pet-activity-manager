@@ -19,7 +19,7 @@ import {
 import { useState } from 'react';
 
 export const ActivityCard = ({ activity, date, note }) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const toast = useToast();
   const handleToggle = () => setShow(!show);
 
@@ -34,6 +34,7 @@ export const ActivityCard = ({ activity, date, note }) => {
         p={5}
         shadow="md"
         borderWidth="1px"
+        boxShadow="3px 3px 10px tomato"
       >
         <VStack>
           <HStack alignItems="end" w="full">

@@ -40,6 +40,7 @@ export const ActivityManager = () => {
       p={10}
       spacing={10}
       alignItems="flex-end"
+      boxShadow="3px 3px 10px tomato"
     >
       <HStack alignSelf="flex-end">
         <ColorModeSwitcher />
