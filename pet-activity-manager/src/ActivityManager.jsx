@@ -1,4 +1,5 @@
 import {
+  Badge,
   Button,
   FormControl,
   FormLabel,
@@ -17,7 +18,7 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import paw from './paw.png';
 
-export const ActivityManager = () => {
+export const ActivityManager = ({ activities }) => {
   const toast = useToast();
   const handleAdd = () => {
     toast({
@@ -28,6 +29,7 @@ export const ActivityManager = () => {
       isClosable: true,
     });
   };
+  console.log(activities[0].note);
   const handleClear = () => {};
   const handleChange = () => {};
   return (
@@ -74,9 +76,18 @@ export const ActivityManager = () => {
             </Select>
           </FormControl>
         </GridItem>
-        <GridItem colSpan={1}>
-          <FormControl>
-            <Text>TIme</Text>
+        <GridItem colSpan={1} paddingLeft={5} display="flex">
+          <FormControl alignItems="center">
+            <Text>Time</Text>
+            <Badge
+              variant="outline"
+              color="tomato"
+              fontSize="32px"
+              alignContent="center"
+              justifyItems="baseline"
+            >
+              12:34p
+            </Badge>
           </FormControl>
         </GridItem>
         <GridItem colSpan={2}>

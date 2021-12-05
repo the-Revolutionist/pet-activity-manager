@@ -17,7 +17,7 @@ function App() {
   return (
     <Center margin="20px">
       <VStack height="100%" width="500px">
-        <ActivityManager />
+        <ActivityManager activities={activities} />
         {activities.map(activity => (
           <ActivityCard
             activity={activity.activity}
