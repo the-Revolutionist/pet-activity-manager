@@ -19,7 +19,7 @@ import {
 
 import { useState } from 'react';
 
-export const ActivityCard = ({ title, date, amount }) => {
+export const ActivityCard = ({ activity, date, note }) => {
   const [show, setShow] = useState(true);
   const toast = useToast();
   const handleToggle = () => setShow(!show);
@@ -44,7 +44,7 @@ export const ActivityCard = ({ title, date, amount }) => {
                   <Center size="lg" w="full" h="full">
                     Activity
                   </Center>
-                  <Text>{title}</Text>
+                  <Text>{activity}</Text>
                 </VStack>
                 <Spacer />
                 <VStack>
@@ -71,12 +71,12 @@ export const ActivityCard = ({ title, date, amount }) => {
             <GridItem colSpan={2}>
               <FormControl>
                 <FormLabel>Note:</FormLabel>
-                <Collapse startingHeight={100} in={show}>
-                  <Text>{amount}</Text>
+                <Collapse startingHeight={20} in={show}>
+                  <Text>{note}</Text>
                 </Collapse>
                 <Stack direction="row">
-                  <Button size="sm" onClick={handleToggle} mt="1px">
-                    Show {show ? 'More' : 'Less'}
+                  <Button size="sm" onClick={handleToggle} mt="2px">
+                    Show {show ? 'Less' : 'More'}
                   </Button>
                 </Stack>
               </FormControl>

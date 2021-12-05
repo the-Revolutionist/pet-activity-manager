@@ -5,27 +5,23 @@ import { ActivityManager } from './ActivityManager';
 
 const activities = [
   {
-    id: 1,
-    title: 'Toilet Paper',
-    amount: 94.12,
+    activity: 'Meal',
+    note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     date: Date(),
   },
   {
-    id: 2,
-    title: 'New TV',
-    amount: 799.99,
+    activity: 'Meal',
+    note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: Date(),
   },
   {
-    id: 3,
-    title: 'Car Insurance',
-    amount: 294.67,
+    activity: 'Meal',
+    note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: Date(),
   },
   {
-    id: 4,
-    title: 'New Desk',
-    amount: 450,
+    activity: 'Meal',
+    note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     date: Date(),
   },
 ];
@@ -37,9 +33,9 @@ function App() {
         <ActivityManager />
         {activities.map(activity => (
           <ActivityCard
-            title={activity.title}
+            activity={activity.activity}
             date={activity.date}
-            amount={activity.amount}
+            note={activity.note}
           />
         ))}
       </VStack>
