@@ -20,9 +20,9 @@ import paw from './paw.png';
 import { useState } from 'react';
 
 export const ActivityManager = (props, { activities }) => {
-  const [selector, setSelector] = useState('');
-  const [note, setNote] = useState('');
-  const [dateTime, setDateTime] = useState('');
+  const [enteredActivity, setEnteredActivity] = useState('');
+  const [enteredNote, setEnteredNote] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
   const toast = useToast();
   const handleAddActivity = e => {
     toast({
@@ -34,21 +34,21 @@ export const ActivityManager = (props, { activities }) => {
     });
   };
   const date = new Date().toLocaleDateString();
-  const time = new Date().toLocaleTimeString();
 
   const handleSelectChange = e => {
-    setSelector(e.target.value);
+    setEnteredActivity(e.target.value);
   };
   const handleNoteChange = e => {
-    setNote(e.target.value);
+    setEnteredNote(e.target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+    setEnteredDate(date);
     const submittedData = {
-      selector,
-      note,
-      date,
+      activity: enteredActivity,
+      note: enteredNote,
+      date: enteredDate,
     };
     props.getActivity(submittedData);
   };
