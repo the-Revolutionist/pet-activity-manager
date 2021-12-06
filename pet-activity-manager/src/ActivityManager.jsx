@@ -19,6 +19,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import paw from './paw.png';
 
 export const ActivityManager = ({ activities }) => {
+  console.log(activities[0]);
   const toast = useToast();
   const handleAddActivity = e => {
     toast({
