@@ -13,11 +13,20 @@ const activities = [
   },
 ];
 
+const handleGetActivity = activity => {
+  console.log(activity.date);
+  console.log(activity.note);
+  console.log(activity.selector);
+};
+
 function App() {
   return (
     <Center margin="20px">
       <VStack height="100%" width="500px">
-        <ActivityManager activities={activities} />
+        <ActivityManager
+          activities={activities}
+          getActivity={handleGetActivity}
+        />
         {activities.map(activity => (
           <ActivityCard
             activity={activity.activity}

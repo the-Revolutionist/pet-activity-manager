@@ -17,9 +17,12 @@ import {
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import paw from './paw.png';
+import { useState } from 'react';
 
-export const ActivityManager = ({ activities }) => {
-  console.log(activities[0]);
+export const ActivityManager = (props, { activities }) => {
+  const [selector, setSelector] = useState('');
+  const [note, setNote] = useState('');
+  const [dateTime, setDateTime] = useState('');
   const toast = useToast();
   const handleAddActivity = e => {
     toast({
@@ -32,24 +35,24 @@ export const ActivityManager = ({ activities }) => {
   };
   const date = new Date().toLocaleDateString();
   const time = new Date().toLocaleTimeString();
-  const handleFormClear = e => {
-    console.log();
-  };
+
   const handleSelectChange = e => {
-    console.log(`selector: ${e.target.value}`);
+    setSelector(e.target.value);
   };
   const handleNoteChange = e => {
-    console.log(`note: ${e}`);
+    setNote(e.target.value);
   };
+
   const handleSubmit = e => {
     e.preventDefault();
     const submittedData = {
+      selector,
+      note,
       date,
-      time,
     };
-    console.log(submittedData);
+    props.getActivity(submittedData);
   };
-
+  const handleFormClear = e => {};
   return (
     <form onSubmit={handleSubmit}>
       <VStack
@@ -101,12 +104,12 @@ export const ActivityManager = ({ activities }) => {
               <Text paddingBottom={2}>Time</Text>
               <Badge
                 variant="solid"
-                color="tomato"
-                fontSize="18px"
+                //color="tomato"
+                fontSize="24px"
                 alignContent="center"
                 justifyItems="baseline"
               >
-                {date}-{time}
+                {date}
               </Badge>
             </FormControl>
           </GridItem>
