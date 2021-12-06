@@ -29,11 +29,8 @@ export const ActivityManager = ({ activities }) => {
       isClosable: true,
     });
   };
-  const dt = Date.now();
-  const dateTime = () => {
-    console.log(dt);
-    return dt;
-  };
+  const date = new Date().toLocaleDateString();
+  const time = new Date().toLocaleTimeString();
   const handleFormClear = e => {
     console.log();
   };
@@ -43,93 +40,104 @@ export const ActivityManager = ({ activities }) => {
   const handleNoteChange = e => {
     console.log(`note: ${e}`);
   };
+  const handleSubmit = e => {
+    e.preventDefault();
+    const submittedData = {
+      date,
+      time,
+    };
+    console.log(submittedData);
+  };
 
   return (
-    <VStack
-      bgColor="grey"
-      opacity="0.9"
-      w="full"
-      borderColor="transparent"
-      borderWidth={1}
-      borderRadius="10px"
-      h="100%"
-      p={10}
-      spacing={10}
-      alignItems="flex-end"
-      boxShadow="3px 3px 10px tomato"
-    >
-      <HStack alignSelf="flex-end">
-        <ColorModeSwitcher />
-      </HStack>
-      <VStack spacing={3}>
-        <Image
-          alt="image"
-          paddingBottom="15px"
-          //src="https://th.bing.com/th/id/R.c4334baba71a39e82c2b141f43777145?rik=uPYV4ft2WuWFFQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_233291.png&ehk=ct%2blPQ8K7WhEwuWDOcyMJw87BXZ6CbQzx5Oc0e9Wx1s%3d&risl=&pid=ImgRaw&r=0"
-          src={paw}
-        />
-        <Heading alignSelf="center" size="xl">
-          Pet Activity Tracker
-        </Heading>
-      </VStack>
-      <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
-        <GridItem colSpan={1}>
-          <FormControl>
-            <FormLabel>Choose an activity:</FormLabel>
-            <Select
-              placeholder="Select"
-              size="md"
-              focusBorderColor="tomato"
-              onChange={handleSelectChange}
-            >
-              <option value="Meal">Meal</option>
-              <option value="Medicine">Medicine</option>
-              <option value="Misc">Misc</option>
-            </Select>
-          </FormControl>
-        </GridItem>
-        <GridItem colSpan={1} paddingLeft={5} display="flex">
-          <FormControl alignItems="center">
-            <Text>Time</Text>
-            <Badge
-              variant="outline"
-              color="tomato"
-              fontSize="32px"
-              alignContent="center"
-              justifyItems="baseline"
-            >
-              {dt}
-            </Badge>
-          </FormControl>
-        </GridItem>
-        <GridItem colSpan={2}>
-          <FormControl>
-            <FormLabel>Add Note:</FormLabel>
-            <Input
-              onChange={handleNoteChange}
-              focusBorderColor="tomato"
-              placeholder="Enter additional info"
-            />
-          </FormControl>
-        </GridItem>
-        <GridItem colSpan={2}>
-          <FormControl>
-            <HStack>
-              <Button
-                type="submit"
-                size="lg"
-                w="full"
-                onClick={handleAddActivity}
+    <form onSubmit={handleSubmit}>
+      <VStack
+        bgColor="grey"
+        opacity="0.9"
+        w="full"
+        borderColor="transparent"
+        borderWidth={1}
+        borderRadius="10px"
+        h="100%"
+        p={10}
+        spacing={10}
+        alignItems="flex-end"
+        boxShadow="3px 3px 10px tomato"
+      >
+        <HStack alignSelf="flex-end">
+          <ColorModeSwitcher />
+        </HStack>
+
+        <VStack spacing={3}>
+          <Image
+            alt="image"
+            paddingBottom="15px"
+            //src="https://th.bing.com/th/id/R.c4334baba71a39e82c2b141f43777145?rik=uPYV4ft2WuWFFQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_233291.png&ehk=ct%2blPQ8K7WhEwuWDOcyMJw87BXZ6CbQzx5Oc0e9Wx1s%3d&risl=&pid=ImgRaw&r=0"
+            src={paw}
+          />
+          <Heading alignSelf="center" size="xl">
+            Pet Activity Tracker
+          </Heading>
+        </VStack>
+        <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
+          <GridItem colSpan={1}>
+            <FormControl>
+              <FormLabel>Choose an activity:</FormLabel>
+              <Select
+                placeholder="Select"
+                size="md"
+                focusBorderColor="tomato"
+                onChange={handleSelectChange}
               >
-                Add Activity
-              </Button>
-              <Button size="lg" w="full" onClick={handleFormClear}>
-                Clear Form
-              </Button>
-            </HStack>
-          </FormControl>
-        </GridItem>
-      </SimpleGrid>
-    </VStack>
+                <option value="Meal">Meal</option>
+                <option value="Medicine">Medicine</option>
+                <option value="Misc">Misc</option>
+              </Select>
+            </FormControl>
+          </GridItem>
+          <GridItem colSpan={1} paddingLeft={2} display="flex">
+            <FormControl alignItems="center">
+              <Text paddingBottom={2}>Time</Text>
+              <Badge
+                variant="solid"
+                color="tomato"
+                fontSize="18px"
+                alignContent="center"
+                justifyItems="baseline"
+              >
+                {date}-{time}
+              </Badge>
+            </FormControl>
+          </GridItem>
+          <GridItem colSpan={2}>
+            <FormControl>
+              <FormLabel>Add Note:</FormLabel>
+              <Input
+                onChange={handleNoteChange}
+                focusBorderColor="tomato"
+                placeholder="Enter additional info"
+              />
+            </FormControl>
+          </GridItem>
+          <GridItem colSpan={2}>
+            <FormControl>
+              <HStack>
+                <Button
+                  type="submit"
+                  size="lg"
+                  w="full"
+                  onClick={handleAddActivity}
+                >
+                  Add Activity
+                </Button>
+                <Button size="lg" w="full" onClick={handleFormClear}>
+                  Clear Form
+                </Button>
+              </HStack>
+            </FormControl>
+          </GridItem>
+        </SimpleGrid>
+      </VStack>
+    </form>
   );
 };
