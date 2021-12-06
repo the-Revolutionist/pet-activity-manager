@@ -20,7 +20,7 @@ import paw from './paw.png';
 
 export const ActivityManager = ({ activities }) => {
   const toast = useToast();
-  const handleAdd = () => {
+  const handleAddActivity = e => {
     toast({
       title: 'Updated',
       description: 'New Activity Added to List',
@@ -29,9 +29,21 @@ export const ActivityManager = ({ activities }) => {
       isClosable: true,
     });
   };
-  console.log(activities[0].note);
-  const handleClear = () => {};
-  const handleChange = () => {};
+  const dt = Date.now();
+  const dateTime = () => {
+    console.log(dt);
+    return dt;
+  };
+  const handleFormClear = e => {
+    console.log();
+  };
+  const handleSelectChange = e => {
+    console.log(`selector: ${e.target.value}`);
+  };
+  const handleNoteChange = e => {
+    console.log(`note: ${e}`);
+  };
+
   return (
     <VStack
       bgColor="grey"
@@ -68,7 +80,7 @@ export const ActivityManager = ({ activities }) => {
               placeholder="Select"
               size="md"
               focusBorderColor="tomato"
-              onChange={e => e.target.value}
+              onChange={handleSelectChange}
             >
               <option value="Meal">Meal</option>
               <option value="Medicine">Medicine</option>
@@ -86,7 +98,7 @@ export const ActivityManager = ({ activities }) => {
               alignContent="center"
               justifyItems="baseline"
             >
-              12:34p
+              {dt}
             </Badge>
           </FormControl>
         </GridItem>
@@ -94,20 +106,28 @@ export const ActivityManager = ({ activities }) => {
           <FormControl>
             <FormLabel>Add Note:</FormLabel>
             <Input
+              onChange={handleNoteChange}
               focusBorderColor="tomato"
               placeholder="Enter additional info"
             />
           </FormControl>
         </GridItem>
         <GridItem colSpan={2}>
-          <HStack>
-            <Button size="lg" w="full" onClick={handleAdd}>
-              Add Activity
-            </Button>
-            <Button size="lg" w="full" onClick={handleClear}>
-              Clear Form
-            </Button>
-          </HStack>
+          <FormControl>
+            <HStack>
+              <Button
+                type="submit"
+                size="lg"
+                w="full"
+                onClick={handleAddActivity}
+              >
+                Add Activity
+              </Button>
+              <Button size="lg" w="full" onClick={handleFormClear}>
+                Clear Form
+              </Button>
+            </HStack>
+          </FormControl>
         </GridItem>
       </SimpleGrid>
     </VStack>
