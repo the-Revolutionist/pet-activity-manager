@@ -30,15 +30,12 @@ export const ActivityCard = ({ activity, date, note, id, handleDelete }) => {
       duration: 2000,
       isClosable: true,
     });
-  };
-  const handleOnSubmit = e => {
-    e.preventDefault();
-    handleDelete(e);
+    handleDelete(id);
   };
 
   return (
     <>
-      <form key={id} onSubmit={handleOnSubmit}>
+      <form>
         <Box
           bgColor="grey"
           opacity="0.9"
@@ -52,7 +49,7 @@ export const ActivityCard = ({ activity, date, note, id, handleDelete }) => {
         >
           <VStack>
             <HStack w="full">
-              <CloseButton type="submit" size="md" onClick={handleOnClick} />
+              <CloseButton type="button" size="md" onClick={handleOnClick} />
             </HStack>
             <SimpleGrid columns={2} columnGap={4} rowGap={2} w="full">
               <GridItem colSpan={1} display="flex">

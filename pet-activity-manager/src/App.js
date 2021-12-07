@@ -23,12 +23,11 @@ function App() {
       return [activity, ...prevActivities];
     });
   };
-
   const handleDelete = e => {
     console.log('delete clicked');
+    console.log({ e });
   };
 
-  console.log(activities);
   return (
     <Center margin="20px">
       <VStack height="100%" width="500px">
@@ -39,6 +38,7 @@ function App() {
         {activities.map(activity => (
           <ActivityCard
             key={activity.id}
+            id={activity.id}
             handleDelete={handleDelete}
             activity={activity.activity}
             date={activity.date}

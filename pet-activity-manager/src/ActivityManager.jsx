@@ -10,7 +10,6 @@ import {
   Input,
   Select,
   SimpleGrid,
-  Text,
   VStack,
   useToast,
 } from '@chakra-ui/react';
