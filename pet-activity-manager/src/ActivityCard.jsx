@@ -33,10 +33,10 @@ export const ActivityCard = ({ activity, date, note }) => {
         p={5}
         shadow="md"
         borderWidth="1px"
-        boxShadow="3px 3px 10px tomato"
+        boxShadow="5px 5px 10px #3f3f3f"
       >
         <VStack>
-          <HStack alignItems="end" w="full">
+          <HStack w="full">
             <CloseButton
               size="md"
               onClick={() =>
@@ -50,32 +50,46 @@ export const ActivityCard = ({ activity, date, note }) => {
               }
             />
           </HStack>
-          <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
-            <GridItem colSpan={2}>
-              <VStack>
-                <Center size="lg" w="full" h="full" fontWeight={700}>
-                  Activity
-                </Center>
-                <Text>{activity}</Text>
-              </VStack>
-              <VStack>
-                <Center size="lg" w="full" fontWeight={700}>
-                  Date
-                </Center>
-                <Text>{date}</Text>
-              </VStack>
+          <SimpleGrid columns={2} columnGap={4} rowGap={2} w="full">
+            <GridItem colSpan={1} display="flex">
+              <HStack justifyContent="flex-end">
+                <GridItem
+                  fontSize="30px"
+                  colSpan={1}
+                  marginRight="120px"
+                  marginLeft="30px"
+                >
+                  <Center fontWeight={700}>Activity</Center>
+                  <Text>{activity}</Text>
+                </GridItem>
+
+                <GridItem fontSize="30px" colSpan={1} alignItems="flex-end">
+                  <Center fontWeight={700}>
+                    <Text>Date</Text>
+                  </Center>
+                  <Text>{date}</Text>
+                </GridItem>
+              </HStack>
             </GridItem>
+
             <GridItem colSpan={2}>
               <FormControl>
-                <FormLabel fontSize="20px" fontWeight={700}>
+                <FormLabel fontSize="30px" fontWeight={700} marginLeft="30px">
                   Note:
                 </FormLabel>
-                <Collapse startingHeight={20} in={show}>
-                  <Text fontSize="32px">{note}</Text>
+                <Collapse startingHeight={10} in={show}>
+                  <Text marginLeft="30px" fontSize="32px">
+                    {note}
+                  </Text>
                 </Collapse>
                 <Stack direction="row">
-                  <Button size="sm" onClick={handleToggle} mt="-1px">
-                    Show {show ? 'Less' : 'More'}
+                  <Button
+                    size="sm"
+                    onClick={handleToggle}
+                    mt="-1px"
+                    marginLeft="30px"
+                  >
+                    {show ? 'Hide' : 'Show'} Note
                   </Button>
                 </Stack>
               </FormControl>

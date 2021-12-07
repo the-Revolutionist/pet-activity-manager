@@ -10,7 +10,7 @@ const DUMMY_ACTIVITY = [
     note:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    date: new Date(2021, 2, 28).getFullYear(),
+    date: new Date(2021, 2, 28).toLocaleDateString(),
   },
 ];
 
@@ -21,10 +21,9 @@ function App() {
     setActivities(prevActivities => {
       return [activity, ...prevActivities];
     });
-
-    console.log(activities);
   };
 
+  console.log(activities);
   return (
     <Center margin="20px">
       <VStack height="100%" width="500px">

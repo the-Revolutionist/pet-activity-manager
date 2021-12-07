@@ -19,10 +19,12 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import paw from './paw.png';
 import { useState } from 'react';
 
-export const ActivityManager = (props, { activities }) => {
+export const ActivityManager = ({ addActivity }) => {
   const [enteredActivity, setEnteredActivity] = useState('');
   const [enteredNote, setEnteredNote] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
+  const [enteredDate, setEnteredDate] = useState(
+    new Date().toLocaleDateString()
+  );
   const toast = useToast();
   const handleAddActivity = e => {
     toast({
@@ -33,14 +35,6 @@ export const ActivityManager = (props, { activities }) => {
       isClosable: true,
     });
   };
-  const getDate = () => {
-    const month = new Date().toLocaleString('default', { month: 'long' });
-    const day = new Date().getDate();
-    const year = new Date().getFullYear();
-    return day + '/' + month + '/' + year;
-  };
-
-  console.log(getDate());
 
   const handleSelectChange = e => {
     setEnteredActivity(e.target.value);
@@ -51,18 +45,20 @@ export const ActivityManager = (props, { activities }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setEnteredDate(getDate());
+
     const submittedData = {
       activity: enteredActivity,
       note: enteredNote,
       date: enteredDate,
     };
-    props.addActivity(submittedData);
+    addActivity(submittedData);
     setEnteredActivity('');
-    setEnteredDate('');
     setEnteredNote('');
   };
-  const handleFormClear = e => {};
+  const handleFormClear = e => {
+    setEnteredActivity('');
+    setEnteredNote('');
+  };
   return (
     <form onSubmit={handleSubmit}>
       <VStack
@@ -76,7 +72,7 @@ export const ActivityManager = (props, { activities }) => {
         p={10}
         spacing={10}
         alignItems="flex-end"
-        boxShadow="3px 3px 10px tomato"
+        boxShadow="5px 5px 10px #3f3f3f"
       >
         <HStack alignSelf="flex-end">
           <ColorModeSwitcher />
@@ -112,10 +108,9 @@ export const ActivityManager = (props, { activities }) => {
           </GridItem>
           <GridItem colSpan={1} paddingLeft={2} display="flex">
             <FormControl alignItems="center">
-              <Text paddingBottom={2}>Date</Text>
+              <FormLabel>Date:</FormLabel>
               <Badge
                 variant="solid"
-                //color="tomato"
                 fontSize="24px"
                 alignContent="center"
                 justifyItems="baseline"
