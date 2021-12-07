@@ -60,19 +60,21 @@ export const ActivityCard = ({ activity, date, note }) => {
               </VStack>
               <VStack>
                 <Center size="lg" w="full" fontWeight={700}>
-                  Time Stamp
+                  Date
                 </Center>
                 <Text>{date}</Text>
               </VStack>
             </GridItem>
             <GridItem colSpan={2}>
               <FormControl>
-                <FormLabel fontWeight={700}>Note:</FormLabel>
+                <FormLabel fontSize="20px" fontWeight={700}>
+                  Note:
+                </FormLabel>
                 <Collapse startingHeight={20} in={show}>
-                  <Text>{note}</Text>
+                  <Text fontSize="32px">{note}</Text>
                 </Collapse>
                 <Stack direction="row">
-                  <Button size="sm" onClick={handleToggle} mt="2px">
+                  <Button size="sm" onClick={handleToggle} mt="-1px">
                     Show {show ? 'Less' : 'More'}
                   </Button>
                 </Stack>

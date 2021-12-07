@@ -33,7 +33,14 @@ export const ActivityManager = (props, { activities }) => {
       isClosable: true,
     });
   };
-  const date = new Date().toLocaleDateString();
+  const getDate = () => {
+    const month = new Date().toLocaleString('default', { month: 'long' });
+    const day = new Date().getDate();
+    const year = new Date().getFullYear();
+    return day + '/' + month + '/' + year;
+  };
+
+  console.log(getDate());
 
   const handleSelectChange = e => {
     setEnteredActivity(e.target.value);
@@ -44,13 +51,16 @@ export const ActivityManager = (props, { activities }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setEnteredDate(date);
+    setEnteredDate(getDate());
     const submittedData = {
       activity: enteredActivity,
       note: enteredNote,
       date: enteredDate,
     };
-    props.getActivity(submittedData);
+    props.addActivity(submittedData);
+    setEnteredActivity('');
+    setEnteredDate('');
+    setEnteredNote('');
   };
   const handleFormClear = e => {};
   return (
@@ -88,6 +98,7 @@ export const ActivityManager = (props, { activities }) => {
             <FormControl>
               <FormLabel>Choose an activity:</FormLabel>
               <Select
+                value={enteredActivity}
                 placeholder="Select"
                 size="md"
                 focusBorderColor="tomato"
@@ -101,7 +112,7 @@ export const ActivityManager = (props, { activities }) => {
           </GridItem>
           <GridItem colSpan={1} paddingLeft={2} display="flex">
             <FormControl alignItems="center">
-              <Text paddingBottom={2}>Time</Text>
+              <Text paddingBottom={2}>Date</Text>
               <Badge
                 variant="solid"
                 //color="tomato"
@@ -109,7 +120,7 @@ export const ActivityManager = (props, { activities }) => {
                 alignContent="center"
                 justifyItems="baseline"
               >
-                {date}
+                {enteredDate}
               </Badge>
             </FormControl>
           </GridItem>
@@ -117,6 +128,7 @@ export const ActivityManager = (props, { activities }) => {
             <FormControl>
               <FormLabel>Add Note:</FormLabel>
               <Input
+                value={enteredNote}
                 onChange={handleNoteChange}
                 focusBorderColor="tomato"
                 placeholder="Enter additional info"
