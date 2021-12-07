@@ -24,8 +24,7 @@ function App() {
     });
   };
   const handleDelete = e => {
-    console.log('delete clicked');
-    console.log({ e });
+    setActivities(activities.filter(item => item.id !== e));
   };
 
   return (
