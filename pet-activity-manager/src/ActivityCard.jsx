@@ -17,10 +17,21 @@ import {
 
 import { useState } from 'react';
 
-export const ActivityCard = ({ activity, date, note }) => {
+export const ActivityCard = ({ activity, date, note, handleDelete }) => {
   const [show, setShow] = useState(false);
   const toast = useToast();
   const handleToggle = () => setShow(!show);
+
+  const handleOnClick = () => {
+    handleDelete();
+    toast({
+      title: 'Deleted',
+      description: 'Activity Removed from List',
+      status: 'error',
+      duration: 1000,
+      isClosable: true,
+    });
+  };
 
   return (
     <>
@@ -37,18 +48,7 @@ export const ActivityCard = ({ activity, date, note }) => {
       >
         <VStack>
           <HStack w="full">
-            <CloseButton
-              size="md"
-              onClick={() =>
-                toast({
-                  title: 'Deleted',
-                  description: 'Activity Removed from List',
-                  status: 'error',
-                  duration: 1000,
-                  isClosable: true,
-                })
-              }
-            />
+            <CloseButton size="md" onClick={handleOnClick} />
           </HStack>
           <SimpleGrid columns={2} columnGap={4} rowGap={2} w="full">
             <GridItem colSpan={1} display="flex">

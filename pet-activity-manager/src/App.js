@@ -23,6 +23,10 @@ function App() {
     });
   };
 
+  const handleDelete = () => {
+    console.log('delete clicked');
+  };
+
   console.log(activities);
   return (
     <Center margin="20px">
@@ -33,6 +37,7 @@ function App() {
         />
         {activities.map(activity => (
           <ActivityCard
+            handleDelete={handleDelete}
             activity={activity.activity}
             date={activity.date}
             note={activity.note}
