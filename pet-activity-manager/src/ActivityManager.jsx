@@ -20,6 +20,7 @@ import paw from './paw.png';
 import { useState } from 'react';
 
 export const ActivityManager = ({ addActivity }) => {
+  const [id, setId] = useState('');
   const [enteredActivity, setEnteredActivity] = useState('');
   const [enteredNote, setEnteredNote] = useState('');
   const [enteredDate, setEnteredDate] = useState(
@@ -47,11 +48,13 @@ export const ActivityManager = ({ addActivity }) => {
     e.preventDefault();
 
     const submittedData = {
+      id: Math.random().toString(),
       activity: enteredActivity,
       note: enteredNote,
       date: enteredDate,
     };
     addActivity(submittedData);
+    setId('');
     setEnteredActivity('');
     setEnteredNote('');
   };

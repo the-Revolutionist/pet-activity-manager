@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const DUMMY_ACTIVITY = [
   {
+    id: 0,
     activity: 'Meal',
     note:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
@@ -23,7 +24,7 @@ function App() {
     });
   };
 
-  const handleDelete = () => {
+  const handleDelete = e => {
     console.log('delete clicked');
   };
 
@@ -37,6 +38,7 @@ function App() {
         />
         {activities.map(activity => (
           <ActivityCard
+            key={activity.id}
             handleDelete={handleDelete}
             activity={activity.activity}
             date={activity.date}
