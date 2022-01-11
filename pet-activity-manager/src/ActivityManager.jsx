@@ -13,12 +13,19 @@ import {
   VStack,
   useToast,
 } from '@chakra-ui/react';
+import { useContext, useState } from 'react';
 
+import ActivityContext from '../src/context/activity/activityContext';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import paw from '../src/images/paw.png';
-import { useState } from 'react';
 
 export const ActivityManager = ({ addActivity }) => {
+  const activityContext = useContext(ActivityContext);
+  const [activity, setActivity] = useState({
+    activity: '',
+    note: '',
+    date: Date.now().toLocaleString(),
+  });
   const [id, setId] = useState('');
   const [enteredActivity, setEnteredActivity] = useState('');
   const [enteredNote, setEnteredNote] = useState('');
