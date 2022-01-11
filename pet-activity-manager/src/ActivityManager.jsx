@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import paw from './paw.png';
+import paw from '../src/images/paw.png';
 import { useState } from 'react';
 
 export const ActivityManager = ({ addActivity }) => {
@@ -81,12 +81,7 @@ export const ActivityManager = ({ addActivity }) => {
         </HStack>
 
         <VStack spacing={3}>
-          <Image
-            alt="image"
-            paddingBottom="15px"
-            //src="https://th.bing.com/th/id/R.c4334baba71a39e82c2b141f43777145?rik=uPYV4ft2WuWFFQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_233291.png&ehk=ct%2blPQ8K7WhEwuWDOcyMJw87BXZ6CbQzx5Oc0e9Wx1s%3d&risl=&pid=ImgRaw&r=0"
-            src={paw}
-          />
+          <Image alt="image" paddingBottom="15px" src={paw} />
           <Heading alignSelf="center" size="xl">
             Pet Activity Tracker
           </Heading>

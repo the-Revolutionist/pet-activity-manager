@@ -1,0 +1,5 @@
+export const ADD_ACTIVITY = 'ADD_ACTIVITY';
+export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
+export const SET_CURRENT = 'SET_CURRENT';
+export const CLEAR_CURRENT = 'CLEAR_CURRENT';
+export const UPDATE_CONTACTS = 'UPDATE_CONTACTS';
