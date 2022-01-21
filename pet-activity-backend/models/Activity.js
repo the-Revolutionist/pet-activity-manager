@@ -1,24 +1,17 @@
 const mongoose = require("mongoose");
 
-const ContactSchema = mongoose.Schema({
+const ActivitySchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
-  name: {
+  activity: {
     type: String,
     required: true,
   },
-  email: {
+  note: {
     type: String,
     required: true,
-  },
-  phone: {
-    type: String,
-  },
-  type: {
-    type: String,
-    default: "personal",
   },
   date: {
     type: Date,
@@ -26,4 +19,4 @@ const ContactSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("contact", ContactSchema);
+module.exports = mongoose.model("activity", ActivitySchema);
