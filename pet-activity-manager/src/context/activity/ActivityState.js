@@ -12,6 +12,12 @@ import { useReducer } from 'react';
 
 export const ActivityState = props => {
   const initialState = {
-    activities: [{}, {}, {}],
+    activities: [
+      {
+        activity: 'Meal',
+        note: '0.9oz chk petfresh',
+        date: Date.now().toLocaleString(),
+      },
+    ],
   };
 };

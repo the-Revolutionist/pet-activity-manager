@@ -24,7 +24,7 @@ export const ColorModeSwitcher = props => {
 
   return (
     <>
-      {isInDarkMode ? <Text>Light Mode</Text> : <Text>Dark Mode</Text>}
+      {!isInDarkMode ? <Text>{text} Mode</Text> : <Text>{text} Mode</Text>}
       <IconButton
         size="md"
         fontSize="lg"
